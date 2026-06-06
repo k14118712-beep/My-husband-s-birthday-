@@ -1,179 +1,312 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Surprise for Junaid</title>
-    <!-- Google Fonts se pyari Handwriting Font link ki hai -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
+        /* Base Styling */
         body {
-            background-color: #ffe6e6;
+            background-color: #fceef0;
             font-family: 'Arial', sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
-        h1 {
-            color: #ff4d4d;
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            padding: 0 10px;
+
+        /* Background Bada Happy Birthday Text */
+        .bg-birthday-text {
+            position: absolute;
+            font-size: 10vw;
+            font-weight: 900;
+            color: rgba(242, 166, 178, 0.3);
+            text-align: center;
+            width: 100%;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            font-family: 'Georgia', serif;
+            line-height: 1.2;
+            animation: pulseText 3s infinite ease-in-out;
         }
-        /* Envelope Wrapper */
+
+        @keyframes pulseText {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.03); opacity: 0.45; }
+        }
+
+        /* Envelope Container */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
+            z-index: 2;
+            margin-top: 60px;
+        }
+
+        /* The Envelope Base with Cute Pattern */
+        .envelope {
+            position: relative;
             width: 300px;
             height: 200px;
-            background-color: #ff6666;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-            margin-top: 50px;
+            background-color: #f2a6b2; /* Soft Rose Pink */
+            background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
-        .envelope-wrapper:hover {
-            transform: scale(1.03);
+
+        /* Front flap lines using borders */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-width: 100px 150px 100px 0;
+            border-style: solid;
+            border-color: transparent #f5b0bb transparent transparent;
+            z-index: 3;
+            border-bottom-right-radius: 12px;
         }
-        /* Envelope Flap (Top) */
-        .envelope-flap {
+
+        .envelope::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
+            border-width: 100px 0 100px 150px;
+            border-style: solid;
+            border-color: transparent transparent transparent #f5b0bb;
+            z-index: 3;
+            border-bottom-left-radius: 12px;
+        }
+
+        /* Bottom Flap overlay */
+        .bottom-flap {
+            position: absolute;
+            bottom: 0;
             width: 0;
             height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #ff4d4d;
-            transform-origin: top;
-            transition: transform 0.5s ease-in-out;
-            z-index: 3;
+            border-width: 0 150px 110px 150px;
+            border-style: solid;
+            border-color: transparent transparent #e895a3 transparent;
+            z-index: 4;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
-        /* Inside Card with Beautiful Handwriting */
-        .card {
+
+        /* Top Flap (The opening lid) */
+        .top-flap {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-width: 110px 150px 0 150px;
+            border-style: solid;
+            border-color: #e08596 transparent transparent transparent;
+            transform-origin: top;
+            transition: transform 0.6s ease;
+            z-index: 5;
+        }
+
+        /* Heart Seal (Dhadakta hua Dil) */
+        .heart-seal {
+            position: absolute;
+            top: 90px;
+            left: 135px;
+            width: 30px;
+            height: 30px;
+            background-color: #d63031;
+            transform: rotate(-45deg);
+            z-index: 6;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: beat 1.2s infinite;
+        }
+
+        .heart-seal::before,
+        .heart-seal::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #d63031;
+            border-radius: 50%;
+        }
+
+        .heart-seal::before { top: -15px; left: 0; }
+        .heart-seal::after { left: 15px; top: 0; }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.15) rotate(-45deg); }
+        }
+
+        /* Instruction text below envelope */
+        .instruction {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            color: #885059;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: flash 1.5s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Cute Inside Letter Card (Size adjusts to message length) */
+        .letter-card {
             position: absolute;
             top: 10px;
             left: 15px;
             width: 270px;
-            height: 180px;
-            background-color: #fff9e6; 
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 1;
-            transition: transform 0.8s ease-in-out;
+            height: 180px; /* Shuru mein lifafe k andar chota rhega */
+            background-color: #fff9fa;
+            border: 3px dashed #f2a6b2; /* Cute dashed border */
+            border-radius: 15px;
+            z-index: 2;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.8s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #4a4a4a;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.3rem;
-            line-height: 1.4;
-            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 20px;
             box-sizing: border-box;
-            border: 2px dashed #ffb3b3;
+            text-align: center;
+            overflow: hidden;
         }
-        /* Front folds of envelope */
-        .envelope-front {
+
+        /* Cute designs inside the card corners */
+        .letter-card::before {
+            content: '🌸✨';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid #ff8080;
-            border-right: 150px solid #ff8080;
-            border-bottom: 100px solid #ff8080;
-            z-index: 2;
-            border-radius: 0 0 10px 10px;
+            top: 8px;
+            left: 8px;
+            font-size: 14px;
         }
-        /* Animations when opened */
-        .envelope-wrapper.open .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: 0;
+        .letter-card::after {
+            content: '✨🌸';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 14px;
         }
-        .envelope-wrapper.open .card {
-            transform: translateY(-130px);
-            z-index: 4;
+
+        .letter-card h2 {
+            color: #d63031;
+            font-size: 19px;
+            margin: 0 0 5px 0;
+            font-family: 'Georgia', serif;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .instruction {
-            margin-top: 60px;
-            font-weight: bold;
-            color: #ff4d4d;
-            animation: blink 1.5s infinite;
-            padding: 0 10px;
+
+        .emoji-line {
+            font-size: 16px;
+            margin: 5px 0 10px 0;
+            letter-spacing: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+
+        .letter-card p {
+            color: #634147;
+            font-size: 13px;
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+            font-weight: 550;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .next-btn {
+
+        .cake-icon {
+            font-size: 40px;
+            cursor: pointer;
+            margin-top: 5px;
             display: none;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #ff4d4d;
-            background: white;
-            border: 1px solid #ff4d4d;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-family: 'Arial', sans-serif;
+        }
+
+        /* --- Animation State When Opened --- */
+        .envelope-wrapper.open .top-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-wrapper.open .heart-seal {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Card lifts up and expands its size automatically according to content */
+        .envelope-wrapper.open .letter-card {
+            transform: translateY(-200px); 
+            z-index: 4;
+            height: auto; /* Likhayee k hisab se size khud bada hojayega */
+            min-height: 280px;
+        }
+
+        .envelope-wrapper.open .letter-card h2,
+        .envelope-wrapper.open .letter-card .emoji-line,
+        .envelope-wrapper.open .letter-card p {
+            opacity: 1;
+        }
+
+        .envelope-wrapper.open .cake-icon {
+            display: block;
+            animation: beat 1.5s infinite;
         }
     </style>
 </head>
 <body>
 
-    <h1>Sheikh Sahab, Aap ke liye ek paigham hai... ✨</h1>
+    <!-- Background Bada Happy Birthday Text -->
+    <div class="bg-birthday-text">HAPPY<br>BIRTHDAY</div>
 
-    <!-- Envelope -->
-    <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
-        <div class="envelope-flap"></div>
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+        <div class="top-flap"></div>
+        <div class="bottom-flap"></div>
+        <div class="envelope"></div>
         
-        <!-- Aap ka message exact Roman Urdu me -->
-        <div class="card" id="birthdayCard">
-            Happy Birthday mere pyare Shah Baba. 
-            Aaj aapka birthday hai. Aaj aapka din hai. 
-            Hum real mein to cake cut nahi kar sakte lekin aise hi sahi. 
-            Ab jaldi se cake cut karein. Shabash. ❤️
-            <div class="next-btn" id="nextBtn">Touch here to continue</div>
+        <!-- Heart Button -->
+        <div class="heart-seal"></div>
+        
+        <!-- Inside Cute Card (Jitna bada message, utna bada card!) -->
+        <div class="letter-card">
+            <h2>Happy Birthday Junaid! 🎂🎉</h2>
+            
+            <!-- Bohot saare cute emojis -->
+            <div class="emoji-line">❤️✨🎈🥳👑💖💌💫🌟🌸🌷🎈</div>
+            
+            <!-- Card ka text (Aap jitna bada chahein likhein, card khud adjust hoga) -->
+            <p>Aapko janamdin bohot bohot mubarak ho! Aap hamesha khush rahein aur muskurate rahein. Khuda aapko har khushi de! Aap mere liye bohot special hain! 🥰🎁🌹🌹✨</p>
+            
+            <!-- Interactive cake option -->
+            <div class="cake-icon">🎂</div>
         </div>
-        
-        <div class="envelope-front"></div>
+
+        <div class="instruction">Tap the heart to open your surprise</div>
     </div>
 
-    <div class="instruction" id="instructionText">✉️ Lifafe ko kholne ke liye touch karein!</div>
-
-    <!-- Kal aap ki pehli voiceover file (voice1.mp3) yahan connect hogi -->
-    <audio id="firstVoice" src="voice1.mp3"></audio>
-
     <script>
-        let isOpen = false;
-
         function openEnvelope() {
-            if (!isOpen) {
-                // Lifafa open karne ki animation
-                document.getElementById('envelope').classList.add('open');
-                document.getElementById('instructionText').innerText = "💝 Card par touch karke aage barhein...";
-                
-                setTimeout(() => {
-                    document.getElementById('nextBtn').style.display = 'block';
-                }, 800);
-                
-                // Audio capability ready rakhne ke liye
-                const voice = document.getElementById('firstVoice');
-                voice.play().catch(e => console.log("Audio waiting for file upload"));
-                
-                isOpen = true;
-            } else {
-                // Dobara click karne par cake cutting page par redirect hoga
-                window.location.href = "cake.html";
-            }
+            const wrapper = document.querySelector('.envelope-wrapper');
+            wrapper.classList.add('open');
         }
     </script>
 
 </body>
-</html>
+    </html>
+    
