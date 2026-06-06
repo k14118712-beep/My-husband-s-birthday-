@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise for Junaid</title>
+    <!-- Google Fonts se pyari Handwriting Font link ki hai -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff4d4d;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        /* Envelope Wrapper */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            width: 300px;
+            height: 200px;
+            background-color: #ff6666;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            margin-top: 50px;
+        }
+        .envelope-wrapper:hover {
+            transform: scale(1.03);
+        }
+        /* Envelope Flap (Top) */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #ff4d4d;
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+            z-index: 3;
+        }
+        /* Inside Card with Beautiful Handwriting */
+        .card {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            width: 270px;
+            height: 180px;
+            background-color: #fff9e6; 
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 1;
+            transition: transform 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 2px dashed #ffb3b3;
+        }
+        /* Front folds of envelope */
+        .envelope-front {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid #ff8080;
+            border-right: 150px solid #ff8080;
+            border-bottom: 100px solid #ff8080;
+            z-index: 2;
+            border-radius: 0 0 10px 10px;
+        }
+        /* Animations when opened */
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .envelope-wrapper.open .card {
+            transform: translateY(-130px);
+            z-index: 4;
+        }
+        .instruction {
+            margin-top: 60px;
+            font-weight: bold;
+            color: #ff4d4d;
+            animation: blink 1.5s infinite;
+            padding: 0 10px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .next-btn {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #ff4d4d;
+            background: white;
+            border: 1px solid #ff4d4d;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sheikh Sahab, Aap ke liye ek paigham hai... ✨</h1>
+
+    <!-- Envelope -->
+    <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        
+        <!-- Aap ka message exact Roman Urdu me -->
+        <div class="card" id="birthdayCard">
+            Happy Birthday mere pyare Shah Baba. 
+            Aaj aapka birthday hai. Aaj aapka din hai. 
+            Hum real mein to cake cut nahi kar sakte lekin aise hi sahi. 
+            Ab jaldi se cake cut karein. Shabash. ❤️
+            <div class="next-btn" id="nextBtn">Touch here to continue</div>
+        </div>
+        
+        <div class="envelope-front"></div>
+    </div>
+
+    <div class="instruction" id="instructionText">✉️ Lifafe ko kholne ke liye touch karein!</div>
+
+    <!-- Kal aap ki pehli voiceover file (voice1.mp3) yahan connect hogi -->
+    <audio id="firstVoice" src="voice1.mp3"></audio>
+
+    <script>
+        let isOpen = false;
+
+        function openEnvelope() {
+            if (!isOpen) {
+                // Lifafa open karne ki animation
+                document.getElementById('envelope').classList.add('open');
+                document.getElementById('instructionText').innerText = "💝 Card par touch karke aage barhein...";
+                
+                setTimeout(() => {
+                    document.getElementById('nextBtn').style.display = 'block';
+                }, 800);
+                
+                // Audio capability ready rakhne ke liye
+                const voice = document.getElementById('firstVoice');
+                voice.play().catch(e => console.log("Audio waiting for file upload"));
+                
+                isOpen = true;
+            } else {
+                // Dobara click karne par cake cutting page par redirect hoga
+                window.location.href = "cake.html";
+            }
+        }
+    </script>
+
+</body>
+</html>
