@@ -1,302 +1,241 @@
-                    .<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Surprise for Junaid</title>
+    <!-- Beautiful Handwriting Font Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Birthday Theme Background */
-        body {
-            background-color: #fceef0;
-            /* Birthday theme background patterns (confetti and stars style) */
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(242, 166, 178, 0.4) 1px, transparent 1px),
-                radial-gradient(circle at 75% 20%, rgba(255, 214, 165, 0.6) 2px, transparent 2px),
-                radial-gradient(circle at 80% 70%, rgba(188, 244, 245, 0.6) 2px, transparent 2px),
-                radial-gradient(circle at 15% 80%, rgba(255, 202, 212, 0.5) 3px, transparent 3px);
-            background-size: 40px 40px;
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fceef0;
+            /* Birthday theme subtle background patterns */
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.4) 15px, transparent 16px),
+                              radial-gradient(circle at 75% 20%, rgba(135, 206, 250, 0.4) 20px, transparent 21px),
+                              radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.4) 12px, transparent 13px),
+                              radial-gradient(circle at 15% 80%, rgba(216, 191, 216, 0.4) 18px, transparent 19px);
+            background-size: 100% 100%;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             overflow: hidden;
             position: relative;
         }
 
-        /* Lifafe k bahir background m bara sa Happy Birthday */
+        /* Big Birthday Text behind the Envelope */
         .bg-birthday-text {
             position: absolute;
-            font-size: 11vw;
-            font-weight: 900;
-            color: rgba(232, 149, 163, 0.25);
-            text-align: center;
             width: 100%;
+            text-align: center;
+            top: 15%;
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: rgba(255, 105, 180, 0.25);
+            font-weight: bold;
             z-index: 1;
             pointer-events: none;
             user-select: none;
-            font-family: 'Georgia', serif;
-            line-height: 1.1;
-            letter-spacing: 2px;
-            animation: pulseText 3s infinite ease-in-out;
+            line-height: 1.2;
         }
 
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); opacity: 0.25; }
-            50% { transform: scale(1.04); opacity: 0.4; }
+        /* Theme Decorations (Balloons visual placeholder layout) */
+        .decoration-balloon {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.7;
+            z-index: 1;
+            animation: float 4s ease-in-out infinite alternate;
+        }
+        .b1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .b2 { top: 15%; right: 10%; animation-delay: 1s; }
+        .b3 { bottom: 15%; left: 8%; animation-delay: 0.5s; }
+        .b4 { bottom: 10%; right: 8%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-5s); }
+            100% { transform: translateY(-15px) rotate(5deg); }
         }
 
-        /* Envelope Container */
+        /* Beautiful Envelope Container */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
-            z-index: 2;
-            margin-top: 60px;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        .envelope-wrapper:hover {
+            transform: scale(1.03);
         }
 
-        /* Cute Decorated Envelope Base */
         .envelope {
             position: relative;
-            width: 320px;
-            height: 210px;
-            background-color: #f2a6b2; /* Soft Rose Pink */
-            /* Cute heart/polka dot design on envelope */
-            background-image: radial-gradient(#fff 12%, transparent 12%), radial-gradient(#fff 12%, transparent 12%);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            box-shadow: 0 15px 40px rgba(214, 48, 49, 0.15);
+            width: 300px;
+            height: 200px;
+            background-color: #ff6b8b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 0 0 10px 10px;
         }
 
-        /* Front flap lines with beautiful layout */
+        /* Front flap of envelope */
         .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            border-width: 105px 160px 105px 0;
-            border-style: solid;
-            border-color: transparent #f5b0bb transparent transparent;
-            z-index: 3;
-            border-bottom-right-radius: 15px;
-        }
-
-        .envelope::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            border-width: 105px 0 105px 160px;
+            width: 0;
+            height: 0;
             border-style: solid;
-            border-color: transparent transparent transparent #f5b0bb;
+            border-width: 100px 150px 0 150px;
+            border-color: #ff8da1 transparent transparent transparent;
             z-index: 3;
-            border-bottom-left-radius: 15px;
+            transform-origin: top;
+            transition: transform 0.5s ease 0.3s;
         }
 
-        /* Bottom Flap overlay */
-        .bottom-flap {
+        /* Side pockets of envelope */
+        .envelope::after {
+            content: "";
             position: absolute;
             bottom: 0;
+            left: 0;
             width: 0;
             height: 0;
-            border-width: 0 160px 115px 160px;
             border-style: solid;
-            border-color: transparent transparent #e895a3 transparent;
-            z-index: 4;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            border-width: 0 0 200px 300px;
+            border-color: transparent transparent #ff5274 transparent;
+            z-index: 2;
+            border-radius: 0 0 10px 10px;
         }
 
-        /* Top Flap (The opening lid) */
-        .top-flap {
-            position: absolute;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-width: 115px 160px 0 160px;
-            border-style: solid;
-            border-color: #e08596 transparent transparent transparent;
-            transform-origin: top;
-            transition: transform 0.6s ease;
-            z-index: 5;
-        }
-
-        /* Heart Seal (Dhadakta hua Dil) */
-        .heart-seal {
-            position: absolute;
-            top: 95px;
-            left: 145px;
-            width: 32px;
-            height: 32px;
-            background-color: #d63031;
-            transform: rotate(-45deg);
-            z-index: 6;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            animation: beat 1.2s infinite;
-        }
-
-        .heart-seal::before,
-        .heart-seal::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background-color: #d63031;
-            border-radius: 50%;
-        }
-
-        .heart-seal::before { top: -16px; left: 0; }
-        .heart-seal::after { left: 16px; top: 0; }
-
-        @keyframes beat {
-            0%, 100% { transform: scale(1) rotate(-45deg); }
-            50% { transform: scale(1.15) rotate(-45deg); }
-        }
-
-        /* Instruction below envelope */
-        .instruction {
-            position: absolute;
-            bottom: -50px;
-            width: 100%;
-            text-align: center;
-            color: #885059;
-            font-size: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            animation: flash 1.5s infinite;
-        }
-
-        @keyframes flash {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        /* Cute Inside Letter Card (Size automatically adjusts to your text) */
-        .letter-card {
+        /* Inner card with beautiful handwriting */
+        .card {
             position: absolute;
             top: 10px;
             left: 15px;
-            width: 290px;
-            height: 190px;
-            background-color: #fff9fa;
-            border: 3px dashed #f2a6b2; /* Cute ribbon style dashed border */
-            border-radius: 15px;
-            z-index: 2;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.8s ease;
+            width: 270px;
+            height: 180px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            z-index: 1;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease, opacity 0.5s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            padding: 25px 20px;
-            box-sizing: border-box;
             text-align: center;
-            overflow: hidden;
         }
 
-        /* Corner designs inside the card */
-        .letter-card::before {
-            content: '🌸✨';
+        .card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* Heart seal button */
+        .heart-seal {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            font-size: 14px;
+            top: 85px;
+            left: 135px;
+            width: 30px;
+            height: 30px;
+            background-color: #e91e63;
+            transform: rotate(-45deg);
+            z-index: 4;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .letter-card::after {
-            content: '✨🌸';
+        .heart-seal::before,
+        .heart-seal::after {
+            content: "";
             position: absolute;
-            bottom: 8px;
-            right: 8px;
-            font-size: 14px;
+            width: 30px;
+            height: 30px;
+            background-color: #e91e63;
+            border-radius: 50%;
         }
+        .heart-seal::before { top: -15px; left: 0; }
+        .heart-seal::after { left: 15px; top: 0; }
 
-        /* Custom text style for your beautiful message */
-        .letter-card p {
-            color: #634147;
-            font-size: 14px;
-            margin: 0;
-            line-height: 1.6;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .cake-icon {
-            font-size: 45px;
-            cursor: pointer;
-            margin-top: 15px;
-            display: none;
-        }
-
-        /* --- Animation State When Opened --- */
-        .envelope-wrapper.open .top-flap {
+        /* Animation Classes when Clicked */
+        .envelope-wrapper.open .envelope::before {
             transform: rotateX(180deg);
-            z-index: 1;
+            z-index: 0;
+        }
+
+        .envelope-wrapper.open .card {
+            transform: translateY(-100px);
+            z-index: 5;
+            height: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .envelope-wrapper.open .heart-seal {
+            transform: translateY(60px) rotate(-45deg) scale(0);
             opacity: 0;
-            pointer-events: none;
         }
 
-        /* Card pulls out completely and fits the exact size of your text */
-        .envelope-wrapper.open .letter-card {
-            transform: translateY(-230px); 
-            z-index: 4;
-            height: auto; /* Text ke size ke barabar hojayega */
-            min-height: 320px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        .envelope-wrapper.open .letter-card p {
-            opacity: 1;
-        }
-
-        .envelope-wrapper.open .cake-icon {
-            display: block;
-            animation: beat 1.5s infinite;
+        /* Mobile adjustments */
+        @media (max-width: 400px) {
+            .bg-birthday-text { font-size: 2.8rem; top: 12%; }
+            .envelope { width: 280px; height: 185px; }
+            .envelope::before { border-width: 92px 140px 0 140px; }
+            .envelope::after { border-width: 0 0 185px 280px; }
+            .card { width: 250px; height: 165px; left: 15px; }
+            .heart-seal { left: 125px; top: 78px; }
+            .envelope-wrapper.open .card { transform: translateY(-90px); height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Lifafe k bahir background m bara sa happy birthday -->
-    <div class="bg-birthday-text">HAPPY<br>BIRTHDAY</div>
+    <!-- Background Birthday Branding -->
+    <div class="bg-birthday-text">
+        Happy Birthday<br>Juniii ❤️
+    </div>
 
-    <div class="envelope-wrapper" onclick="openEnvelope()">
-        <div class="top-flap"></div>
-        <div class="bottom-flap"></div>
-        <div class="envelope"></div>
-        
-        <!-- Heart Button -->
-        <div class="heart-seal"></div>
-        
-        <!-- Inside Cute Card (Exact size as your message) -->
-        <div class="letter-card">
-            <!-- Aapka likhwaya hua exact message saare emojis k sath -->
-            <p>
-                happy birthday mere pyare shoho jiii aj ap ka din h your spacial day ham sath m to cake cut nhi kar sakte lakin ese to kar sakte hain n chalen ab jaldi se cake cut karen mera bacha ☺️🎂🎉🌈🙈💍🫂💋
-            </p>
-            
-            <!-- Bada interactive cake cutting option inside the card -->
-            <div class="cake-icon">🎂</div>
+    <!-- Theme Decorative Floating Elements -->
+    <div class="decoration-balloon b1">🎈</div>
+    <div class="decoration-balloon b2">🎉</div>
+    <div class="decoration-balloon b3">✨</div>
+    <div class="decoration-balloon b4">🎈</div>
+
+    <!-- Interactive Envelope Structure -->
+    <div class="envelope-wrapper" id="envelopeContainer">
+        <div class="envelope">
+            <div class="card">
+                <h2>Happy Birthday Junaid!</h2>
+                <p>A special surprise is waiting for you. Touch to open your magical birthday journey...</p>
+            </div>
         </div>
-
-        <div class="instruction">Tap the heart to open your surprise</div>
+        <div class="heart-seal"></div>
     </div>
 
     <script>
-        function openEnvelope() {
-            const wrapper = document.querySelector('.envelope-wrapper');
-            wrapper.classList.add('open');
-        }
+        // Toggle open/close animation on click
+        const container = document.getElementById('envelopeContainer');
+        container.addEventListener('click', () => {
+            container.classList.toggle('open');
+        });
     </script>
 
 </body>
-    </html>
-    
+  </html>
+  
