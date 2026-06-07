@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sheikh Sahab!</title>
-    <!-- Beautiful Bold Handwriting Font -->
+    <title>Happy Birthday Junaid!</title>
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -16,8 +16,7 @@
             padding: 0;
         }
         body {
-            /* Luxury Dark Birthday Theme Background */
-            background: linear-gradient(135deg, #0d0116 0%, #200122 50%, #000000 100%);
+            background: linear-gradient(135deg, #0d0116 0%, #1a021f 50%, #000000 100%);
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -29,7 +28,7 @@
             position: relative;
         }
 
-        /* Neon Floating Birthday Elements for Dark Theme */
+        /* Neon Floating Birthday Elements */
         .bg-decorations {
             position: absolute;
             width: 100%;
@@ -38,15 +37,13 @@
             left: 0;
             pointer-events: none;
             font-size: 1.8rem;
-            opacity: 0.6;
+            opacity: 0.4;
         }
         .decor { position: absolute; filter: drop-shadow(0 0 10px rgba(255, 71, 126, 0.6)); }
         .d1 { top: 8%; left: 8%; animation: float 4s ease-in-out infinite; }
         .d2 { top: 12%; right: 10%; animation: float 3.5s ease-in-out infinite 0.5s; }
         .d3 { bottom: 15%; left: 12%; animation: float 4.5s ease-in-out infinite 1s; }
         .d4 { bottom: 10%; right: 8%; animation: float 3.8s ease-in-out infinite 0.2s; }
-        .d5 { top: 45%; left: 4%; font-size: 2.2rem; }
-        .d6 { top: 40%; right: 4%; font-size: 2.2rem; }
 
         /* Neon Glowing Birthday Heading */
         .birthday-heading {
@@ -55,32 +52,98 @@
             color: #ff477e;
             text-align: center;
             margin-bottom: 50px;
-            text-shadow: 0 0 15px rgba(255, 71, 126, 0.8), 0 0 30px rgba(255, 71, 126, 0.4);
+            text-shadow: 0 0 15px rgba(255, 71, 126, 0.8);
             animation: popIn 1.2s ease-out;
             line-height: 1.4;
             max-width: 90%;
             z-index: 10;
         }
 
-        /* Outer Container for Envelope */
+        /* Envelope Main Container */
         .envelope-container {
             position: relative;
-            width: 340px;
-            height: 240px;
+            width: 330px;
+            height: 230px;
             z-index: 5;
             animation: float 3s ease-in-out infinite;
+            cursor: pointer;
         }
 
-        /* Envelope Main Box */
-        .envelope-wrapper {
+        /* Secret Card Inside - Pehle completely hidden */
+        .card {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 300px;
+            height: 200px;
+            background: #fffbf2;
+            border-radius: 8px;
+            padding: 25px 20px;
+            z-index: 2; /* Folds ke piche rahega start mein */
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .card p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.65rem; 
+            color: #360b17;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        /* Envelope Base Background */
+        .envelope-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #d93d6c; /* Rich Premium Dark Pink */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: #bd2d59;
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        /* Left & Right Folds */
+        .envelope-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid #e64a79;
+            border-top: 115px solid transparent;
+            border-bottom: 115px solid #e64a79;
+            border-radius: 0 0 0 12px;
+            z-index: 3;
+        }
+        .envelope-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 165px solid #e64a79;
+            border-top: 115px solid transparent;
+            border-bottom: 115px solid #e64a79;
+            border-radius: 0 0 12px 0;
+            z-index: 3;
+        }
+
+        /* Bottom Fold */
+        .envelope-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid transparent;
+            border-right: 165px solid transparent;
+            border-bottom: 115px solid #d93d6c;
             border-radius: 0 0 12px 12px;
-            cursor: pointer;
-            overflow: visible;
+            z-index: 4;
         }
         
         /* Poora Band Envelope Top Flap */
@@ -90,97 +153,47 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 170px solid transparent;
-            border-right: 170px solid transparent;
-            border-top: 140px solid #bd2d59; /* Perfectly overlaps and closes */
+            border-left: 165px solid transparent;
+            border-right: 165px solid transparent;
+            border-top: 125px solid #b5224e;
             transform-origin: top;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 4;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+            transition: transform 0.6s ease;
+            z-index: 5; /* Sabse upar taake card poora band ho */
         }
 
-        /* Side and Bottom Folds to Hide Card Completely at Start */
-        .envelope-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 170px solid #e64a79;
-            border-right: 170px solid #e64a79;
-            border-bottom: 125px solid #d93d6c;
-            border-radius: 0 0 12px 12px;
-            z-index: 3;
-        }
-
-        /* BARA PYARA HEART STICKER */
+        /* BHT BADA AUR CUTE HEART STICKER */
         .heart-sticker {
             position: absolute;
-            top: 105px;
+            top: 95px;
             left: 50%;
             transform: translateX(-50%) scale(1);
-            width: 65px; /* Size bara kar diya h */
-            height: 65px;
+            width: 70px; /* Size bada kar diya */
+            height: 70px;
             background: #ff0044;
             clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-            z-index: 5;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            z-index: 6; /* Flap ke bhi upar lock lagane ke liye */
+            transition: transform 0.3s ease, opacity 0.3s;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-            transform-origin: center;
         }
 
-        .envelope-container:hover .heart-sticker {
-            transform: translateX(-50%) scale(1.15);
-        }
-
-        /* Elegant Secret Card (Completely Hidden Behind folds) */
-        .card {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 310px;
-            height: 210px;
-            background: #fffbf2; /* Luxury cream letter paper */
-            border-radius: 8px;
-            padding: 25px 20px;
-            z-index: 1; /* Hidden inside at start */
-            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s, z-index 0s 0.4s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        
-        /* High-Quality Readable Handwriting */
-        .card p {
-            font-family: 'Caveat', cursive;
-            font-size: 1.7rem; 
-            color: #360b17;
-            line-height: 1.4;
-            word-spacing: 1px;
-            font-weight: 700;
-        }
-
-        /* --- Open State Classes via JavaScript --- */
+        /* --- Open State Animations --- */
         .envelope-container.open .flap {
             transform: rotateX(180deg);
-            z-index: 1;
+            z-index: 1; /* Khulne ke baad piche chala jayega */
         }
         .envelope-container.open .heart-sticker {
-            transform: translateX(-50%) translateY(-50px) scale(0);
+            transform: translateX(-50%) scale(0);
             opacity: 0;
         }
         .envelope-container.open .card {
-            transform: translateY(-160px);
-            z-index: 6; /* Pops out in front of everything */
+            transform: translateY(-150px);
+            z-index: 7; /* Khulne ke baad card sabse upar aa jayega */
             height: auto;
-            min-height: 260px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            min-height: 250px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* Modern Glowing Next Button */
+        /* Next Button */
         .next-btn {
             display: none;
             margin-top: 60px;
@@ -202,7 +215,6 @@
             box-shadow: 0 0 25px rgba(255, 71, 126, 0.9);
         }
 
-        /* Soft Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -213,20 +225,17 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Floating Hint Message */
         .hint {
-            margin-top: 30px;
+            margin-top: 35px;
             font-size: 1rem;
             color: #ffb3c6;
             font-weight: 700;
-            transition: 0.3s;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             padding: 8px 22px;
             border-radius: 20px;
             z-index: 10;
             border: 1px solid rgba(255, 71, 126, 0.3);
-            text-shadow: 0 0 5px rgba(255, 71, 126, 0.5);
         }
         .envelope-container.open + .hint {
             opacity: 0;
@@ -235,33 +244,30 @@
 </head>
 <body>
 
-    <!-- Dark Birthday Neon Decorations Background -->
     <div class="bg-decorations">
         <div class="decor d1">🎈</div> <div class="decor d2">✨</div>
         <div class="decor d3">🥳</div> <div class="decor d4">🎈</div>
-        <div class="decor d5">✨</div> <div class="decor d6">🎉</div>
     </div>
 
-    <!-- Glowing Title -->
     <div class="birthday-heading">
         HAPPY BIRTHDAY MERA BACHA ☺️🌻👑🌈
     </div>
 
-    <!-- Perfectly Closed Envelope Container with BIG HEART -->
+    <!-- Completely Fixed Folded Envelope Container -->
     <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
-        <div class="envelope-wrapper">
-            <div class="flap"></div>
-            <div class="heart-sticker"></div>
-            <div class="card">
-                <!-- Premium Calligraphy Message -->
-                <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
-            </div>
+        <div class="envelope-back"></div>
+        <div class="card">
+            <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
         </div>
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        <div class="envelope-bottom"></div>
+        <div class="flap"></div>
+        <div class="heart-sticker"></div>
     </div>
     
     <div class="hint">Bade Heart par click karke lifafa kholein! ❤️</div>
 
-    <!-- Next Page Button -->
     <a href="cake.html" class="next-btn" id="nextButton">Chalen Cake Cut Karen! 🎂</a>
 
     <script>
@@ -271,7 +277,6 @@
             
             container.classList.add('open');
             
-            // Button tabhi aayega jab card poora open ho jaye
             setTimeout(() => {
                 nextBtn.style.display = 'block';
             }, 1200);
@@ -279,4 +284,4 @@
     </script>
 </body>
     </html>
-            
+    
