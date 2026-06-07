@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Juniii!</title>
-    <!-- Google Fonts for Beautiful Handwriting and Clean Text -->
+    <title>Happy Birthday Junaid!</title>
+    <!-- Beautiful Calligraphy Handwriting Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -16,8 +16,8 @@
             padding: 0;
         }
         body {
-            /* Modern Birthday Pastel Gradient with floating soft sparkles effect */
-            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #f0e6ff 100%);
+            /* Proper Birthday Festive Aesthetic Background */
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 40%, #f0e6ff 100%);
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -29,55 +29,61 @@
             position: relative;
         }
 
-        /* Modern Birthday Sparkle / Confetti Background Elements */
-        body::before {
-            content: '🎈 ✨ 🥳 🎈 ✨';
+        /* Birthday Celebration Elements Background */
+        .bg-decorations {
             position: absolute;
-            top: 10%;
-            font-size: 1.5rem;
-            opacity: 0.3;
-            letter-spacing: 20px;
             width: 100%;
-            text-align: center;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            font-size: 1.5rem;
+            opacity: 0.25;
         }
-        
-        /* Modern Birthday Title */
+        .decor { position: absolute; }
+        .d1 { top: 10%; left: 10%; animation: float 4s ease-in-out infinite; }
+        .d2 { top: 15%; right: 12%; animation: float 3.5s ease-in-out infinite 0.5s; }
+        .d3 { bottom: 15%; left: 15%; animation: float 4.5s ease-in-out infinite 1s; }
+        .d4 { bottom: 12%; right: 10%; animation: float 3.8s ease-in-out infinite 0.2s; }
+        .d5 { top: 40%; left: 5%; font-size: 2rem; }
+        .d6 { top: 45%; right: 5%; font-size: 2rem; }
+
+        /* Modern Bold Birthday Heading */
         .birthday-heading {
             font-size: 2.2rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #ff477e;
             text-align: center;
-            margin-bottom: 60px;
-            text-shadow: 2px 4px 10px rgba(255, 71, 126, 0.2);
+            margin-bottom: 40px;
+            text-shadow: 2px 4px 10px rgba(255, 71, 126, 0.25);
             animation: popIn 1.2s ease-out;
             line-height: 1.5;
             max-width: 90%;
             z-index: 10;
         }
 
-        /* Large Heart Envelope Container */
-        .envelope-wrapper {
-            position: relative;
-            cursor: pointer;
-            perspective: 1000px;
-            animation: float 3s ease-in-out infinite;
-            z-index: 5;
-        }
-        
-        /* Big Premium Envelope Box */
-        .envelope {
+        /* Outer Container for Envelope */
+        .envelope-container {
             position: relative;
             width: 340px;
-            height: 230px;
+            height: 240px;
+            z-index: 5;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Envelope Box - Card se thoda bara aur premium */
+        .envelope-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             background: #ff7096;
             box-shadow: 0 15px 35px rgba(0,0,0,0.18);
             border-radius: 0 0 12px 12px;
-            transition: transform 0.5s;
+            cursor: pointer;
         }
         
-        /* Envelope Flap */
-        .envelope::before {
-            content: '';
+        /* Poora Band Envelope Top Flap */
+        .flap {
             position: absolute;
             top: 0;
             left: 0;
@@ -85,84 +91,94 @@
             height: 0;
             border-left: 170px solid transparent;
             border-right: 170px solid transparent;
-            border-top: 130px solid #ff477e;
+            border-top: 135px solid #ff477e; /* Bada flap jo poora band karega */
             transform-origin: top;
-            transition: transform 0.5s 0.3s;
-            z-index: 5;
-            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.1));
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.15));
         }
 
-        /* The Big Cute Heart Sticker on the Envelope */
+        /* Envelope Bottom and Side Folds to Hide Card Perfectly */
+        .envelope-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 170px solid #ff85a2;
+            border-right: 170px solid #ff85a2;
+            border-bottom: 120px solid #ff7096;
+            border-radius: 0 0 12px 12px;
+            z-index: 3;
+        }
+
+        /* Cute Heart Sticker to Keep it Closed */
         .heart-sticker {
             position: absolute;
-            top: 95px;
+            top: 110px;
             left: 50%;
             transform: translateX(-50%) scale(1);
             width: 45px;
             height: 45px;
             background: #ff0a54;
             clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-            z-index: 6;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+            z-index: 5;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
             transform-origin: center;
         }
 
-        .envelope-wrapper:hover .heart-sticker {
-            transform: translateX(-50%) scale(1.15);
-        }
-
-        /* Beautiful Letter Card inside envelope */
+        /* Elegant Letter Card Inside (Fully Hidden at Start) */
         .card {
             position: absolute;
             top: 15px;
             left: 15px;
             width: 310px;
-            height: 200px;
-            background: #fffdf9; /* Light elegant paper look */
+            height: 210px;
+            background: #fffdf9; /* Cream vintage paper look */
             border-radius: 8px;
             padding: 25px 20px;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.02), 0 5px 15px rgba(0,0,0,0.05);
-            z-index: 2;
-            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s, z-index 0s 0.5s;
+            z-index: 1; /* Inside the envelope at start */
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s, z-index 0s 0.4s;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            border: 1px solid #fff5f7;
+            border: 1px solid #ffe5ec;
         }
         
-        /* Beautiful Handwriting Style (Wazeh aur Pyari) */
+        /* Bhot Hi Pyari Cursive Handwriting Style */
         .card p {
-            font-family: 'Caveat', cursive;
+            font-family: 'Dancing Script', cursive;
             font-size: 1.6rem; 
             color: #4a1525;
             line-height: 1.4;
-            word-spacing: 1px;
-            font-weight: 600;
+            word-spacing: 2px;
         }
 
-        /* Open State Animations */
-        .envelope-wrapper.open .envelope::before {
+        /* --- Open State Classes via JavaScript --- */
+        .envelope-container.open .flap {
             transform: rotateX(180deg);
             z-index: 1;
         }
-        .envelope-wrapper.open .heart-sticker {
-            transform: translateX(-50%) translateY(-100px) scale(0);
+        .envelope-container.open .heart-sticker {
+            transform: translateX(-50%) translateY(-50px) scale(0);
             opacity: 0;
         }
-        .envelope-wrapper.open .card {
-            transform: translateY(-150px);
-            z-index: 6;
+        .envelope-container.open .card {
+            transform: translateY(-160px);
+            z-index: 6; /* Comes in front of everything */
             height: auto;
-            min-height: 260px;
+            min-height: 250px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        /* Modern Next Page Button */
+        /* Next Page Button */
         .next-btn {
             display: none;
-            margin-top: 60px;
+            margin-top: 50px;
             padding: 14px 35px;
             background: linear-gradient(45deg, #ff477e, #ff7096);
             color: white;
@@ -181,7 +197,7 @@
             box-shadow: 0 12px 25px rgba(255, 71, 126, 0.5);
         }
 
-        /* Soft Floating Effect */
+        /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -192,37 +208,47 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Soft Hint Text */
+        /* Bottom Hint Text */
         .hint {
             margin-top: 25px;
             font-size: 0.95rem;
             color: #a38ba3;
             font-weight: 500;
             transition: 0.3s;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             padding: 6px 18px;
             border-radius: 15px;
             z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .envelope-wrapper.open + .hint {
+        .envelope-container.open + .hint {
             opacity: 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Bada Modern Title -->
+    <!-- Birthday Festive Decorations Background -->
+    <div class="bg-decorations">
+        <div class="decor d1">🎈</div> <div class="decor d2">✨</div>
+        <div class="decor d3">🥳</div> <div class="decor d4">🎈</div>
+        <div class="decor d5">✨</div> <div class="decor d6">🎉</div>
+    </div>
+
+    <!-- Title -->
     <div class="birthday-heading">
         HAPPY BIRTHDAY MERA BACHA ☺️🌻👑🌈
     </div>
 
-    <!-- Beautiful Large Heart Envelope -->
-    <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
-        <div class="envelope"></div>
-        <div class="heart-sticker"></div>
-        <div class="card">
-            <!-- Pyari Handwriting me Message -->
-            <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
+    <!-- Fully Closed Large Envelope Container -->
+    <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
+        <div class="envelope-wrapper">
+            <div class="flap"></div>
+            <div class="heart-sticker"></div>
+            <div class="card">
+                <!-- Premium Calligraphy Message -->
+                <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
+            </div>
         </div>
     </div>
     
@@ -233,16 +259,17 @@
 
     <script>
         function openEnvelope() {
-            const wrapper = document.getElementById('envelopeWrapper');
+            const container = document.getElementById('envelopeContainer');
             const nextBtn = document.getElementById('nextButton');
             
-            wrapper.classList.add('open');
+            container.classList.add('open');
             
+            // Button smooth delay ke baad dikhega jab card poora khul jaye
             setTimeout(() => {
                 nextBtn.style.display = 'block';
             }, 1200);
         }
     </script>
 </body>
-    </html>
-    
+                                                                 </html>
+                                                                 
