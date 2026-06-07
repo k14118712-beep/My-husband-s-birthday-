@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Juniii</title>
-    <!-- Beautiful Handwriting Font Link -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -18,13 +17,19 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Aapki website ka wahi exact same background original folder se */
-            background: url('background.jpg') no-repeat center center/cover;
+            
+            /* --- BACKGROUND OPTION 1 (Direct Image Name) --- */
+            background: url('1780834052142.png') no-repeat center center/cover;
+            
+            /* --- BACKGROUND OPTION 2 (Agar Option 1 kaam na kare, to upar wali line ke shuru mien // laga kar neeche wali line ka // hata dein) --- */
+            /* background: url('./1780834052142.png') no-repeat center center/cover; */
+
+            /* --- BACKGROUND OPTION 3 (Full Online GitHub Path) --- */
+            /* background: url('https://k14118712-beep.github.io/My-husband-s-birthday-/1780834052142.png') no-repeat center center/cover; */
+
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
-
-        /* Agar folder mein image ka naam background.png hai to aap upar badal sakti hain */
 
         /* Container for the whole page */
         .wrapper {
@@ -116,7 +121,7 @@
             z-index: 2; 
         }
 
-        /* Inside Letter Card */
+        /* Inside Letter Card look exactly like your choice */
         .letter-card {
             position: absolute;
             bottom: 10px;
@@ -133,7 +138,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Confetti style inside the card */
             background-image: radial-gradient(#ff4081 10%, transparent 11%),
                               radial-gradient(#00e676 10%, transparent 11%),
                               radial-gradient(#29b6f6 10%, transparent 11%),
@@ -143,7 +147,7 @@
             background-color: #fffdf9;
         }
 
-        /* Beautiful Handwriting style for wording */
+        /* Beautiful Handwriting font */
         .card-text {
             font-family: 'Caveat', cursive;
             font-size: 1.65rem;
@@ -153,11 +157,11 @@
             font-weight: 700;
         }
 
-        /* When open: card slides up and grows bigger */
+        /* Slide up without overlapping background text */
         .envelope-wrapper.open .letter-card {
             transform: translateY(-130px);
             height: 350px;
-            z-index: 6; /* Sab se upar taake text overlap na ho */
+            z-index: 6; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
@@ -195,17 +199,14 @@
 
     <div class="wrapper">
         
-        <!-- Big Header Text behind the card -->
         <div class="bg-text-container">
             <div class="bg-title">HAPPY<br>BIRTHDAY MERA</div>
             <div class="bg-subtitle">BACHA</div>
         </div>
 
-        <!-- Interactive Envelope -->
         <div class="envelope-wrapper" id="envelope" onclick="toggleEnvelope()">
             <div class="envelope-lid"></div>
             
-            <!-- Inside Surprise Card -->
             <div class="letter-card">
                 <div class="card-text">
                     HAPPY BIRTHDAY MERI JAN 😊🌻👑🌈<br>
@@ -219,7 +220,6 @@
             </div>
         </div>
 
-        <!-- Bottom Button -->
         <div class="btn-container">
             <button class="action-btn" onclick="goToCakePage()">Chalen Cake Cut Karen! 🥳</button>
         </div>
@@ -237,4 +237,5 @@
         }
     </script>
 </body>
-</html>
+    </html>
+        
