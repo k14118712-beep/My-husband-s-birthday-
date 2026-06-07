@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Juniii</title>
+    <!-- Beautiful Handwriting Font Link -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,9 +18,9 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Aapka manpasand real Birthday Cake aur Balloons wala background */
+            /* Aapka exact manpasand Birthday Cake aur 17 Balloons wala background */
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('https://images.unsplash.com/photo-1464349172961-1ee462e4b519?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
@@ -28,7 +29,7 @@
         .wrapper {
             position: relative;
             width: 100%;
-            max-width: 412px; /* Mobile screen size ke liye perfect match */
+            max-width: 412px; 
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -41,7 +42,7 @@
         .bg-text-container {
             text-align: center;
             margin-top: 30px;
-            z-index: 1; /* Envelope aur Card ke piche rahega */
+            z-index: 1; 
         }
 
         .bg-title {
@@ -155,7 +156,7 @@
         .envelope-wrapper.open .letter-card {
             transform: translateY(-130px);
             height: 350px;
-            z-index: 6; /* Sab se upar taake text parha jaye aur overlap na ho */
+            z-index: 6; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
@@ -193,14 +194,17 @@
 
     <div class="wrapper">
         
+        <!-- Big Header Text behind the card -->
         <div class="bg-text-container">
             <div class="bg-title">HAPPY<br>BIRTHDAY MERA</div>
             <div class="bg-subtitle">BACHA</div>
         </div>
 
+        <!-- Interactive Envelope -->
         <div class="envelope-wrapper" id="envelope" onclick="toggleEnvelope()">
             <div class="envelope-lid"></div>
             
+            <!-- Inside Surprise Card -->
             <div class="letter-card">
                 <div class="card-text">
                     HAPPY BIRTHDAY MERI JAN 😊🌻👑🌈<br>
@@ -214,6 +218,7 @@
             </div>
         </div>
 
+        <!-- Bottom Button -->
         <div class="btn-container">
             <button class="action-btn" onclick="goToCakePage()">Chalen Cake Cut Karen! 🥳</button>
         </div>
@@ -221,16 +226,15 @@
     </div>
 
     <script>
-        // Function to open/close envelope on click
         function toggleEnvelope() {
             const envelope = document.getElementById('envelope');
             envelope.classList.toggle('open');
         }
 
-        // Function for button navigation
         function goToCakePage() {
             window.location.href = 'cake.html'; 
         }
     </script>
 </body>
-</html>
+    </html>
+    
