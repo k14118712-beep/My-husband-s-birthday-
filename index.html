@@ -3,239 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Surprise for Junaid</title>
-    <!-- Beautiful Handwriting Font Link -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Happy Birthday Juniii!</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
         body {
-            background-color: #fceef0;
-            /* Birthday theme subtle background patterns */
-            background-image: radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.4) 15px, transparent 16px),
-                              radial-gradient(circle at 75% 20%, rgba(135, 206, 250, 0.4) 20px, transparent 21px),
-                              radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.4) 12px, transparent 13px),
-                              radial-gradient(circle at 15% 80%, rgba(216, 191, 216, 0.4) 18px, transparent 19px);
-            background-size: 100% 100%;
-            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #f0e6ff 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            overflow: hidden;
-            position: relative;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
         }
-
-        /* Big Birthday Text behind the Envelope */
-        .bg-birthday-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            top: 15%;
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: rgba(255, 105, 180, 0.25);
-            font-weight: bold;
-            z-index: 1;
-            pointer-events: none;
-            user-select: none;
-            line-height: 1.2;
-        }
-
-        /* Theme Decorations (Balloons visual placeholder layout) */
-        .decoration-balloon {
-            position: absolute;
+        /* Modern Birthday Heading */
+        .birthday-heading {
             font-size: 2.5rem;
-            opacity: 0.7;
-            z-index: 1;
-            animation: float 4s ease-in-out infinite alternate;
+            font-weight: bold;
+            color: #ff477e;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            animation: popIn 1s ease-out;
+            line-height: 1.4;
         }
-        .b1 { top: 10%; left: 10%; animation-delay: 0s; }
-        .b2 { top: 15%; right: 10%; animation-delay: 1s; }
-        .b3 { bottom: 15%; left: 8%; animation-delay: 0.5s; }
-        .b4 { bottom: 10%; right: 8%; animation-delay: 1.5s; }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(-5s); }
-            100% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        /* Beautiful Envelope Container */
+        /* Envelope Container */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
-            z-index: 10;
-            transition: transform 0.3s ease;
+            perspective: 1000px;
+            animation: float 3s ease-in-out infinite;
         }
-        .envelope-wrapper:hover {
-            transform: scale(1.03);
-        }
-
         .envelope {
             position: relative;
             width: 300px;
             height: 200px;
-            background-color: #ff6b8b;
+            background: #ff7096;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             border-radius: 0 0 10px 10px;
+            transition: transform 0.5s;
         }
-
-        /* Front flap of envelope */
+        /* Envelope Flap */
         .envelope::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 0;
             height: 0;
-            border-style: solid;
-            border-width: 100px 150px 0 150px;
-            border-color: #ff8da1 transparent transparent transparent;
-            z-index: 3;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #ff477e;
             transform-origin: top;
-            transition: transform 0.5s ease 0.3s;
+            transition: transform 0.5s 0.3s;
+            z-index: 3;
         }
-
-        /* Side pockets of envelope */
-        .envelope::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 0 200px 300px;
-            border-color: transparent transparent #ff5274 transparent;
-            z-index: 2;
-            border-radius: 0 0 10px 10px;
-        }
-
-        /* Inner card with beautiful handwriting */
+        /* Card inside envelope */
         .card {
             position: absolute;
             top: 10px;
             left: 15px;
             width: 270px;
             height: 180px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            z-index: 1;
+            background: #ffffff;
+            border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            z-index: 2;
+            transition: transform 0.5s 0.5s, z-index 0s 0.5s;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
         }
-
-        .card h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.2rem;
-            color: #d81b60;
-            margin-bottom: 10px;
-        }
-
         .card p {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.5rem;
-            color: #555;
-            line-height: 1.4;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-weight: 500;
         }
-
-        /* Heart seal button */
-        .heart-seal {
-            position: absolute;
-            top: 85px;
-            left: 135px;
-            width: 30px;
-            height: 30px;
-            background-color: #e91e63;
-            transform: rotate(-45deg);
-            z-index: 4;
-            transition: transform 0.4s ease, opacity 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .heart-seal::before,
-        .heart-seal::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: #e91e63;
-            border-radius: 50%;
-        }
-        .heart-seal::before { top: -15px; left: 0; }
-        .heart-seal::after { left: 15px; top: 0; }
-
-        /* Animation Classes when Clicked */
+        /* Open State Styling */
         .envelope-wrapper.open .envelope::before {
             transform: rotateX(180deg);
-            z-index: 0;
+            z-index: 1;
         }
-
         .envelope-wrapper.open .card {
-            transform: translateY(-100px);
-            z-index: 5;
-            height: 220px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-120px);
+            z-index: 4;
+            height: auto;
+            min-height: 220px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-
-        .envelope-wrapper.open .heart-seal {
-            transform: translateY(60px) rotate(-45deg) scale(0);
+        /* Floating Button for Next Page */
+        .next-btn {
+            display: none;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background: #ff477e;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .next-btn:hover {
+            background: #ff7096;
+            transform: translateY(-3px);
+        }
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* Tap Hint */
+        .hint {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #888;
+            transition: 0.3s;
+        }
+        .envelope-wrapper.open + .hint {
             opacity: 0;
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 400px) {
-            .bg-birthday-text { font-size: 2.8rem; top: 12%; }
-            .envelope { width: 280px; height: 185px; }
-            .envelope::before { border-width: 92px 140px 0 140px; }
-            .envelope::after { border-width: 0 0 185px 280px; }
-            .card { width: 250px; height: 165px; left: 15px; }
-            .heart-seal { left: 125px; top: 78px; }
-            .envelope-wrapper.open .card { transform: translateY(-90px); height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Birthday Branding -->
-    <div class="bg-birthday-text">
-        Happy Birthday<br>Juniii ❤️
+    <div class="birthday-heading">
+        HAPPY BIRTHDAY MERA BACHA ☺️🌻👑🌈
     </div>
 
-    <!-- Theme Decorative Floating Elements -->
-    <div class="decoration-balloon b1">🎈</div>
-    <div class="decoration-balloon b2">🎉</div>
-    <div class="decoration-balloon b3">✨</div>
-    <div class="decoration-balloon b4">🎈</div>
-
-    <!-- Interactive Envelope Structure -->
-    <div class="envelope-wrapper" id="envelopeContainer">
-        <div class="envelope">
-            <div class="card">
-                <h2>Happy Birthday Junaid!</h2>
-                <p>A special surprise is waiting for you. Touch to open your magical birthday journey...</p>
-            </div>
+    <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
+        <div class="envelope"></div>
+        <div class="card">
+            <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
         </div>
-        <div class="heart-seal"></div>
     </div>
+    
+    <div class="hint">Lifafa kholne ke liye click karein! ✨</div>
+
+    <a href="cake.html" class="next-btn" id="nextButton">Chalen Cake Cut Karen! 🎂</a>
 
     <script>
-        // Toggle open/close animation on click
-        const container = document.getElementById('envelopeContainer');
-        container.addEventListener('click', () => {
-            container.classList.toggle('open');
-        });
+        function openEnvelope() {
+            const wrapper = document.getElementById('envelopeWrapper');
+            const nextBtn = document.getElementById('nextButton');
+            
+            wrapper.classList.add('open');
+            
+            // Card khulne ke baad button thodi der mein dikhega
+            setTimeout(() => {
+                nextBtn.style.display = 'block';
+            }, 1000);
+        }
     </script>
-
 </body>
-  </html>
-  
+</html>
