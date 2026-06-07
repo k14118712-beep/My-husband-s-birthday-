@@ -1,233 +1,261 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sheikh Sahab!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-    
+    <title>Happy Birthday Juniii</title>
+    <!-- Beautiful Handwriting Font Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
         body {
-            background: linear-gradient(135deg, #0d0116 0%, #1a021f 50%, #000000 100%);
-            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            /* Birthday themed gradient background with festive vibes */
+            background: linear-gradient(rgba(10, 10, 25, 0.85), rgba(20, 10, 30, 0.9)), 
+                        url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Container for the whole page */
+        .wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 412px; /* Perfect for mobile view like screenshots */
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 20px;
+            padding: 20px 10px;
         }
 
-        /* Birthday Heading */
-        .birthday-heading {
+        /* Big Glowing Header Text behind the envelope */
+        .bg-text-container {
+            text-align: center;
+            margin-top: 10px;
+            z-index: 1; /* Envelope ke piche rahega */
+        }
+
+        .bg-title {
             font-size: 2.2rem;
-            font-weight: 800;
-            color: #ff477e;
-            text-align: center;
-            margin-bottom: 60px;
-            text-shadow: 0 0 15px rgba(255, 71, 126, 0.8);
-            line-height: 1.4;
-            max-width: 90%;
-            z-index: 10;
-        }
-
-        /* Main Container */
-        .envelope-container {
-            position: relative;
-            width: 330px;
-            height: 230px;
-            z-index: 5;
-            cursor: pointer;
-        }
-
-        /* Letter Card Inside - 100% Hidden on Start */
-        .card {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 300px;
-            height: 200px;
-            background: #fffbf2;
-            border-radius: 8px;
-            padding: 25px 20px;
-            z-index: 2; /* Folds ke piche locked */
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .card p {
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem; 
-            color: #360b17;
-            line-height: 1.4;
             font-weight: 700;
+            color: #ff477e;
+            text-shadow: 0 0 15px rgba(255, 71, 126, 0.8), 0 0 25px rgba(255, 71, 126, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
         }
 
-        /* Envelope Shapes */
-        .envelope-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #bd2d59;
-            border-radius: 12px;
-            z-index: 1;
+        .bg-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff477e;
+            text-shadow: 0 0 15px rgba(255, 71, 126, 0.8);
+            margin-top: 5px;
+            letter-spacing: 1px;
         }
-        .envelope-left {
+
+        /* Envelope Container */
+        .envelope-wrapper {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background-color: #d81b60; /* Darker Pink Base */
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: pointer;
+            margin-top: auto;
+            margin-bottom: auto;
+            z-index: 5; /* Card upar aane par overlap sahi karega */
+        }
+
+        /* Front Flaps using clip-path for sharp clean look */
+        .envelope-wrapper::before {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 165px solid #e64a79;
-            border-top: 115px solid transparent;
-            border-bottom: 115px solid #e64a79;
-            border-radius: 0 0 0 12px;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-color: #e91e63; /* Medium Pink Left/Right Flaps */
+            clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 100%, 0% 100%);
             z-index: 3;
         }
-        .envelope-right {
+
+        .envelope-wrapper::after {
+            content: '';
             position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-right: 165px solid #e64a79;
-            border-top: 115px solid transparent;
-            border-bottom: 115px solid #e64a79;
-            border-radius: 0 0 12px 0;
-            z-index: 3;
-        }
-        .envelope-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 165px solid transparent;
-            border-right: 165px solid transparent;
-            border-bottom: 115px solid #d93d6c;
-            border-radius: 0 0 12px 12px;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-color: #ff4081; /* Bright Pink Bottom Flap */
+            clip-path: polygon(0% 100%, 50% 45%, 100% 100%);
             z-index: 4;
         }
-        .flap {
+
+        /* Top Lid of Envelope */
+        .envelope-lid {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 165px solid transparent;
-            border-right: 165px solid transparent;
-            border-top: 125px solid #b5224e;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #c2185b; /* Top Cap */
+            clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
             transform-origin: top;
-            transition: transform 0.6s ease;
-            z-index: 5; /* Sabse upar taake band rakhe */
+            transition: transform 0.6s ease, z-index 0.3s ease;
+            z-index: 5;
         }
 
-        /* BARA AUR CUTE REAL HEART */
-        .heart-sticker {
+        /* When envelope is opened */
+        .envelope-wrapper.open .envelope-lid {
+            transform: rotateX(180deg);
+            z-index: 2; /* Lid piche chali jayegi */
+        }
+
+        /* Inside Letter Card */
+        .letter-card {
             position: absolute;
-            top: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 55px; /* Bara size */
-            line-height: 1;
-            z-index: 6;
-            transition: all 0.4s ease;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            height: 200px;
+            background-color: #fffdf6; /* Off-white card look */
+            border-radius: 8px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.6s ease, height 0.6s ease;
+            z-index: 2; /* Initially hidden inside flaps */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Colorful Confetti background inside the card as per image */
+            background-image: radial-gradient(#ff4081 10%, transparent 11%),
+                              radial-gradient(#00e676 10%, transparent 11%),
+                              radial-gradient(#29b6f6 10%, transparent 11%),
+                              radial-gradient(#ffca28 10%, transparent 11%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px, 15px 5px, 5px 25px;
+            background-color: #fffdf9;
+        }
+
+        /* Beautiful Handwriting style for wording */
+        .card-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.55rem;
+            color: #4a1525;
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        /* When open: card slides up and grows bigger */
+        .envelope-wrapper.open .letter-card {
+            transform: translateY(-130px);
+            height: 340px;
+            z-index: 6; /* Sab se upar taake text parha jaye */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Large Balloon 17 Elements on screen as seen in your template */
+        .balloon-element {
+            position: absolute;
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ff8fa3;
+            opacity: 0.3;
+            z-index: 0;
             user-select: none;
         }
+        .b1 { top: 15%; left: 5%; }
+        .b2 { bottom: 15%; right: 5%; }
 
-        /* --- Open Animations --- */
-        .envelope-container.open .flap {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
-        .envelope-container.open .heart-sticker {
-            transform: translateX(-50%) scale(0);
-            opacity: 0;
-        }
-        .envelope-container.open .card {
-            transform: translateY(-160px);
-            z-index: 7; /* Khulne ke baad message upar aa jayega */
-            height: auto;
-            min-height: 250px;
+        /* Bottom Action Button */
+        .btn-container {
+            width: 100%;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            z-index: 10;
         }
 
-        /* Next Button */
-        .next-btn {
-            display: none;
-            margin-top: 60px;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ff477e, #ff7096);
+        .action-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, #ff4081, #ff79b0);
             color: white;
-            border: none;
-            border-radius: 30px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 25px;
             font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 71, 126, 0.6);
+            font-weight: bold;
             text-decoration: none;
-            z-index: 10;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        .hint {
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #ffb3c6;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 22px;
-            border-radius: 20px;
-            z-index: 10;
+        .action-btn:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
 <body>
 
-    <div class="birthday-heading">
-        HAPPY BIRTHDAY MERA BACHA ☺️🌻👑🌈
-    </div>
+    <!-- Decorative Big 17 Balloons on Background -->
+    <div class="balloon-element b1">17</div>
+    <div class="balloon-element b2">17</div>
 
-    <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
-        <div class="envelope-back"></div>
-        <div class="card">
-            <p>HAPPY BIRTHDAY MERI JAN aj ap ka 17th birthday h aj ap ka din h ham sath m to cake cut nhi kar sakte lakin ese hi sahi chalen ab jaldi she cake cut karen meri jan ☺️🥳</p>
+    <div class="wrapper">
+        
+        <!-- Big Header Text behind the card -->
+        <div class="bg-text-container">
+            <div class="bg-title">HAPPY<br>BIRTHDAY MERA</div>
+            <div class="bg-subtitle">BACHA</div>
         </div>
-        <div class="envelope-left"></div>
-        <div class="envelope-right"></div>
-        <div class="envelope-bottom"></div>
-        <div class="flap"></div>
-        <div class="heart-sticker">❤️</div>
-    </div>
-    
-    <div class="hint" id="hintText">Bade Heart par click karke lifafa kholein! ❤️</div>
 
-    <a href="cake.html" class="next-btn" id="nextButton">Chalen Cake Cut Karen! 🎂</a>
+        <!-- Interactive Envelope -->
+        <div class="envelope-wrapper" id="envelope" onclick="toggleEnvelope()">
+            <div class="envelope-lid"></div>
+            
+            <!-- Inside Surprise Card -->
+            <div class="letter-card">
+                <div class="card-text">
+                    HAPPY BIRTHDAY MERI JAN 😊🌻👑🌈<br>
+                    Aj ap ka 17th birthday h,<br>
+                    aj ap ka din h. Ham sath<br>
+                    m to cake cut nhi kar sakte,<br>
+                    lakin ese hi sahi chalen, ab<br>
+                    jaldi se cake cut karen meri<br>
+                    jan 😊🥳
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="btn-container">
+            <button class="action-btn" onclick="goToCakePage()">Chalen Cake Cut Karen! 🥳</button>
+        </div>
+
+    </div>
 
     <script>
-        function openEnvelope() {
-            const container = document.getElementById('envelopeContainer');
-            const nextBtn = document.getElementById('nextButton');
-            const hint = document.getElementById('hintText');
-            
-            container.classList.add('open');
-            hint.style.display = 'none';
-            
-            setTimeout(() => {
-                nextBtn.style.display = 'block';
-            }, 1000);
+        // Function to open/close envelope on click
+        function toggleEnvelope() {
+            const envelope = document.getElementById('envelope');
+            envelope.classList.toggle('open');
+        }
+
+        // Function for button navigation
+        function goToCakePage() {
+            // Aap apne cake cutting wale page ka filename yahan change kar sakti hain
+            window.location.href = 'cake.html'; 
         }
     </script>
 </body>
-        </html>
-        
+ </html>
+ 
