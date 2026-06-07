@@ -18,12 +18,13 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Aapka exact manpasand Birthday Cake aur 17 Balloons wala background */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
+            /* Aapki website ka wahi exact same background original folder se */
+            background: url('background.jpg') no-repeat center center/cover;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
+
+        /* Agar folder mein image ka naam background.png hai to aap upar badal sakti hain */
 
         /* Container for the whole page */
         .wrapper {
@@ -38,7 +39,7 @@
             padding: 20px 10px;
         }
 
-        /* Big Glowing Header Text behind the envelope */
+        /* Big Header Text behind the envelope */
         .bg-text-container {
             text-align: center;
             margin-top: 30px;
@@ -132,7 +133,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Colorful Confetti background inside the card as per image */
+            /* Confetti style inside the card */
             background-image: radial-gradient(#ff4081 10%, transparent 11%),
                               radial-gradient(#00e676 10%, transparent 11%),
                               radial-gradient(#29b6f6 10%, transparent 11%),
@@ -156,7 +157,7 @@
         .envelope-wrapper.open .letter-card {
             transform: translateY(-130px);
             height: 350px;
-            z-index: 6; 
+            z-index: 6; /* Sab se upar taake text overlap na ho */
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
@@ -236,5 +237,4 @@
         }
     </script>
 </body>
-    </html>
-    
+</html>
