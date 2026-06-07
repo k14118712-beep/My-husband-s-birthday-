@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Juniii!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
@@ -11,8 +15,9 @@
             padding: 0;
         }
         body {
-            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #f0e6ff 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Modern Birthday Pastel Gradient Background with Confetti vibe */
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 40%, #e8dbff 100%);
+            font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -21,34 +26,41 @@
             overflow-x: hidden;
             padding: 20px;
         }
-        /* Modern Birthday Heading */
+        
+        /* Modern & Bold Birthday Heading */
         .birthday-heading {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-size: 2.2rem;
+            font-weight: 600;
             color: #ff477e;
             text-align: center;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-            animation: popIn 1s ease-out;
-            line-height: 1.4;
+            margin-bottom: 50px;
+            text-shadow: 2px 4px 10px rgba(255, 71, 126, 0.2);
+            animation: popIn 1.2s ease-out;
+            line-height: 1.5;
+            max-width: 90%;
         }
-        /* Envelope Container */
+
+        /* Elegant Envelope Container */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
             perspective: 1000px;
             animation: float 3s ease-in-out infinite;
         }
+        
+        /* Premium Look Envelope Box */
         .envelope {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: 320px;
+            height: 220px;
             background: #ff7096;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-radius: 0 0 10px 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+            border-radius: 0 0 12px 12px;
             transition: transform 0.5s;
+            z-index: 3;
         }
-        /* Envelope Flap */
+        
+        /* Beautiful Envelope Flap */
         .envelope::before {
             content: '';
             position: absolute;
@@ -56,85 +68,114 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #ff477e;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 120px solid #ff477e;
             transform-origin: top;
             transition: transform 0.5s 0.3s;
-            z-index: 3;
+            z-index: 5;
+            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.1));
         }
-        /* Card inside envelope */
+
+        /* Shadow effect inside envelope for realism */
+        .envelope::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 220px;
+            background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+            border-radius: 0 0 12px 12px;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* Elegant Letter Card inside envelope */
         .card {
             position: absolute;
-            top: 10px;
+            top: 15px;
             left: 15px;
-            width: 270px;
-            height: 180px;
-            background: #ffffff;
+            width: 290px;
+            height: 190px;
+            background: #fffdf9; /* Light cream paper look */
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02), 0 5px 15px rgba(0,0,0,0.05);
             z-index: 2;
-            transition: transform 0.5s 0.5s, z-index 0s 0.5s;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s, z-index 0s 0.5s;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            border: 1px solid #fff5f7;
         }
+        
+        /* Bhot Hi Pyari Handwriting Style */
         .card p {
-            font-size: 1.1rem;
-            color: #4a4a4a;
-            line-height: 1.5;
-            font-weight: 500;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem; /* Handwriting font thoda bara acha lagta h */
+            color: #4a1525;
+            line-height: 1.3;
+            word-spacing: 2px;
         }
-        /* Open State Styling */
+
+        /* Open State Animations */
         .envelope-wrapper.open .envelope::before {
             transform: rotateX(180deg);
             z-index: 1;
         }
         .envelope-wrapper.open .card {
-            transform: translateY(-120px);
-            z-index: 4;
+            transform: translateY(-140px);
+            z-index: 6;
             height: auto;
-            min-height: 220px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            min-height: 250px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        /* Floating Button for Next Page */
+
+        /* Modern Next Page Button */
         .next-btn {
             display: none;
-            margin-top: 40px;
-            padding: 12px 30px;
-            background: #ff477e;
+            margin-top: 50px;
+            padding: 14px 35px;
+            background: linear-gradient(45deg, #ff477e, #ff7096);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
-            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 71, 126, 0.4);
+            transition: all 0.3s ease;
             text-decoration: none;
+            animation: popIn 0.5s ease-out;
         }
         .next-btn:hover {
-            background: #ff7096;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 71, 126, 0.5);
         }
-        /* Animations */
+
+        /* Soft Floating Effect */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
+            0% { transform: scale(0.85); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        /* Tap Hint */
+
+        /* Soft Hint Text */
         .hint {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #888;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #a38ba3;
+            font-weight: 500;
             transition: 0.3s;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 6px 15px;
+            border-radius: 15px;
         }
         .envelope-wrapper.open + .hint {
             opacity: 0;
@@ -165,10 +206,10 @@
             
             wrapper.classList.add('open');
             
-            // Card khulne ke baad button thodi der mein dikhega
+            // Button thoda smooth break ke baad dikhega
             setTimeout(() => {
                 nextBtn.style.display = 'block';
-            }, 1000);
+            }, 1200);
         }
     </script>
 </body>
